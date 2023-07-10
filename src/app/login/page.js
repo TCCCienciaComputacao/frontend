@@ -30,11 +30,7 @@ export default function Login(){
                         <div className='container-login-form-btn'>
                             <button className='login-form-btn'>Login</button>
                         </div>
-
-                        <div className='text-login'>
-                            <span className='text'>Não possui conta?</span>
-                            <a className='text-createAccount' href=''>Criar conta</a> 
-                        </div>
+                        
                     </form>
                 </div>
             </div>
