@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState } from 'react';
-import logo from '../assets/logo.svg'
-import '../styles/login.css'
+import logo from '../assets/logo.svg';
+import '../styles/login.css';
 
 export default function Login(){
     const [email, setEmail] = useState("")
