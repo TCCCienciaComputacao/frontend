@@ -6,21 +6,26 @@
 }
 
 .navbar {
-    background-color: #060b26;
+    background-color: #000000;
     height: 60px;
     display: flex;
     justify-content: start;
     align-items: center;
+    background: -o-linear-gradient(to left,#E5F5F5, #F0F6EF);
+   background: linear-gradient(to left, #E5F5F5, #F0F6EF);
+   background: -moz-linear-gradient(to left, #E5F5F5, #F0F6EF);
+   background: -webkit-linear-gradient(to left, #E5F5F5, #F0F6EF);
   }
   
   .menu-bars {
+    background-color: #000000;
     margin-left: 2rem;
     font-size: 2rem;
     background: none;
   }
   
   .nav-menu {
-    background-color: #060b26;
+    background-color: #000000;
     width: 200px;
     height: 100vh;
     display: flex;
@@ -29,6 +34,10 @@
     top: 0;
     left: -100%;
     transition: 850ms;
+    background: -o-linear-gradient(to left,#E5F5F5, #F0F6EF);
+   background: linear-gradient(to left, #E5F5F5, #F0F6EF);
+   background: -moz-linear-gradient(to left, #E5F5F5, #F0F6EF);
+   background: -webkit-linear-gradient(to left, #E5F5F5, #F0F6EF);
   }
   
   .nav-menu.active {
@@ -47,7 +56,7 @@
   
   .nav-text a {
     text-decoration: none;
-    color: #f5f5f5;
+    color: #000000;
     font-size: 18px;
     width: 95%;
     height: 100%;
@@ -58,7 +67,7 @@
   }
   
   .nav-text a:hover {
-    background-color: #1a83ff;
+    background-color: #75b5ff;
   }
   
   .nav-menu-items {
@@ -66,12 +75,17 @@
   }
   
   .navbar-toggle {
-    background-color: #060b26;
+    background-color: #000000;
     width: 100%;
     height: 80px;
     display: flex;
     justify-content: start;
     align-items: center;
+
+    background: -o-linear-gradient(to left,#E5F5F5, #F0F6EF);
+   background: linear-gradient(to left, #E5F5F5, #F0F6EF);
+   background: -moz-linear-gradient(to left, #E5F5F5, #F0F6EF);
+   background: -webkit-linear-gradient(to left, #E5F5F5, #F0F6EF);
   }
   
   span {
