@@ -90,7 +90,7 @@
 
 .input {
     font-size: 15px;
-    color: #fff;
+    color: #000000;
     line-height: 1.2;
     border: none;
     display: block;
@@ -124,7 +124,7 @@
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
     -moz-transition: all 0.4s;
-    
+
     background: -o-linear-gradient(to left,#21d4fd, #005f70);
     background: linear-gradient(to left, #21d4fd, #005f70);
     background: -moz-linear-gradient(to left, #21d4fd, #005f70);
@@ -220,7 +220,17 @@
 
 .text-createAccount{
     font-size: 14px;
-    color: #6a7dfe;
+    color: #000000;
     line-height: 1.5;
     text-decoration: none;
 }
+
+.error-message {
+    font-size: 14px;
+    color: #ff0000; /* Cor vermelha para mensagens de erro */
+    line-height: 1.5;
+    padding-top: 5px;
+    padding-left: 20px;
+    margin-left: 10px;
+  }
+  
