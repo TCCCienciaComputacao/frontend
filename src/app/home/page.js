@@ -1,8 +1,7 @@
+import  NavBar from '../navBar/page';
 
-export default function Home() {
+export default function Home(){
   return (
-  <div className='container'>
-    <h1>hello world</h1>
-  </div>
+    <NavBar></NavBar>
   )
 }
