@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import Link from 'next/link'
 import { SidebarData } from './SidebarData'
 
-export default function NavBar () {
+export default function NavBar() {
     const [sidebar, setSideBar] = useState(false);
     const showSidebar = () => setSideBar(!sidebar);
 

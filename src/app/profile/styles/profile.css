@@ -1,0 +1,36 @@
+﻿body {
+    background-color: white;
+}
+
+.title-bar h1 {
+    text-align: center;
+    border: 1px;
+    background-color: #3c9ffb;
+    border-radius: 2px;
+    
+}
+
+.container {
+    background-color: #edeaea;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+    border-radius: 5px;
+    border-color: black;
+}
+
+.container-elemento {
+    text-align: center;
+    font-weight: bold;
+}
+
+.elemento p {
+    text-align: center;
+    font-weight: bold;
+    width: 400px;
+    border: 1px solid blue;
+    background-color: white;
+    border-radius: 2px;
+    border-color: white;
+}
