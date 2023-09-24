@@ -11,10 +11,10 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    background: -o-linear-gradient(to left,#E5F5F5, #F0F6EF);
-   background: linear-gradient(to left, #E5F5F5, #F0F6EF);
-   background: -moz-linear-gradient(to left, #E5F5F5, #F0F6EF);
-   background: -webkit-linear-gradient(to left, #E5F5F5, #F0F6EF);
+    background: -o-linear-gradient(to left,#cfdae0, #dce0e2);
+    background: linear-gradient(to left, #cfdae0, #dce0e2);
+    background: -moz-linear-gradient(to left, #cfdae0, #dce0e2);
+    background: -webkit-linear-gradient(to left, #cfdae0, #dce0e2);
   }
   
   .menu-bars {
@@ -23,7 +23,37 @@
     font-size: 2rem;
     background: none;
   }
-  
+
+  .IconMenu {
+    margin-left: 2rem;
+    font-size: 2rem;
+    color:#000000; 
+  }
+
+  .IconNotification {
+    background-color: #000000;
+    margin-left: 2rem;
+    font-size: 2rem;
+    background: none;
+    position: absolute;
+    left: 95.5%; /* Ajuste a posição horizontal conforme necessário */
+    top: 3.5%; /* Ajuste a posição vertical conforme necessário */
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .IconContact {
+    background-color: #000000;
+    margin-left: 2rem;
+    font-size: 2.5rem;
+    background: none;
+    position: absolute;
+    left: 97%; /* Ajuste a posição horizontal conforme necessário */
+    top: 3.5%; /* Ajuste a posição vertical conforme necessário */
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
   .nav-menu {
     background-color: #000000;
     width: 200px;
@@ -33,18 +63,23 @@
     position: fixed;
     top: 0;
     left: -100%;
-    transition: 850ms;
-    background: -o-linear-gradient(to left,#E5F5F5, #F0F6EF);
-   background: linear-gradient(to left, #E5F5F5, #F0F6EF);
-   background: -moz-linear-gradient(to left, #E5F5F5, #F0F6EF);
-   background: -webkit-linear-gradient(to left, #E5F5F5, #F0F6EF);
+    transition: left 850ms ease-in;
+    background: -o-linear-gradient(to left,#cfdae0, #dce0e2);
+    background: linear-gradient(to left, #cfdae0, #dce0e2);
+    background: -moz-linear-gradient(to left, #cfdae0, #dce0e2);
+    background: -webkit-linear-gradient(to left, #cfdae0, #dce0e2);
   }
   
   .nav-menu.active {
     left: 0;
     transition: 350ms;
+    transition: left 600ms ease-out;
   }
   
+  .menu-bars.FaIcons.FaBars {
+    color: black;
+    background-color: #000000;
+  }
   .nav-text {
     display: flex;
     justify-content: start;
@@ -82,10 +117,10 @@
     justify-content: start;
     align-items: center;
 
-    background: -o-linear-gradient(to left,#E5F5F5, #F0F6EF);
-   background: linear-gradient(to left, #E5F5F5, #F0F6EF);
-   background: -moz-linear-gradient(to left, #E5F5F5, #F0F6EF);
-   background: -webkit-linear-gradient(to left, #E5F5F5, #F0F6EF);
+    background: -o-linear-gradient(to left,#cfdae0, #dce0e2);
+    background: linear-gradient(to left, #cfdae0, #dce0e2);
+    background: -moz-linear-gradient(to left, #cfdae0, #dce0e2);
+    background: -webkit-linear-gradient(to left, #cfdae0, #dce0e2);
   }
   
   span {

@@ -5,44 +5,45 @@ import * as IoIcons from "react-icons/io";
 
 export const SidebarData = [
     {
-        title: 'home',
+        title: 'Início',
         path: '/',
         icon: <AiIcons.AiFillHome/>,
         cName: 'nav-text'
     },    
 
     {
-        title: 'Reports',
-        path: '/reports',
-        icon: <IoIcons.IoIosPaper/>,
+        title: 'Chat',
+        path: '/chat',
+        icon: <IoIcons.IoIosChatboxes/>,
+        cName: 'nav-text'
+    },   
+    {
+        title: 'Calendário',
+        path: '/calendario',
+        icon: <IoIcons.IoIosCalendar/>,
         cName: 'nav-text'
     },    
 
     {
-        title: 'Products',
-        path: '/products',
-        icon: <FaIcons.FaCartPlus/>,
-        cName: 'nav-text'
-    },    
-
-    {
-        title: 'Team',
-        path: '/team',
+        title: 'Turma',
+        path: '/turma',
         icon: <IoIcons.IoMdPeople/>,
         cName: 'nav-text'
     },   
 
+   
+
     {
-        title: 'Messages',
-        path: '/messages',
-        icon: <FaIcons.FaEnvelopeOpenText/>,
+        title: 'Suporte',
+        path: '/Suporte',
+        icon: <IoIcons.IoMdHelpCircle/>,
         cName: 'nav-text'
     },   
 
     {
-        title: 'Support',
-        path: '/support',
-        icon: <IoIcons.IoMdHelpCircle/>,
+        title: 'Configuração',
+        path: '/Suporte',
+        icon: <IoIcons.IoMdSettings/>,
         cName: 'nav-text'
     },   
 

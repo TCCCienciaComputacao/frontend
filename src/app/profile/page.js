@@ -1,6 +1,6 @@
 'use client'
 
-import './styles/profile.css'
+import '../styles/profile.css'
 // import Logo from '../assets/user.png'
 import React, { useState, Image } from 'react';
 import { FaIdCard } from "react-icons/fa";

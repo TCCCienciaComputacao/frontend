@@ -18,10 +18,11 @@
     justify-content: center;
     padding: 15px;
    /* background-color: #b4b4b4ab;*/
-   background: -o-linear-gradient(to left,#E5F5F5, #F0F6EF);
-   background: linear-gradient(to left, #E5F5F5, #F0F6EF);
-   background: -moz-linear-gradient(to left, #E5F5F5, #F0F6EF);
-   background: -webkit-linear-gradient(to left, #E5F5F5, #F0F6EF);
+   background: -o-linear-gradient(to left,#cfdae0, #dce0e2);
+   background: linear-gradient(to left, #cfdae0, #dce0e2);
+   background: -moz-linear-gradient(to left, #cfdae0, #dce0e2);
+   background: -webkit-linear-gradient(to left, #cfdae0, #dce0e2);
+
 
 
 }
