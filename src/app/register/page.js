@@ -2,6 +2,7 @@
 
 import logo from '../assets/logo.svg'
 import React, { useState } from 'react';
+import Axios from "axios"
 import '../styles/register.css'
 
 export default function Register(){
@@ -40,10 +41,18 @@ export default function Register(){
     
       const handleLogin = (e) => {
         e.preventDefault();
-    
+        let params = {
+          name: name,
+          lastName: lastName,
+          email: email,
+          password: password,
+        }
+        console.log(params);
+
         if (validateForm()) {
-          // Lógica de login aqui, redirecione ou faça o que for necessário
-          console.log("Login bem-sucedido!");
+          Axios.post("http://localhost:3000/register", params).then((res) => {
+          console.log(res);
+        });
         } else {
           setShowError(true); // Exibe a mensagem de erro se houver erro
         }

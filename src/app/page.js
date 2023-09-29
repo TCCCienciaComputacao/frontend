@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import logo from './assets/logo.svg';
 import styles from './styles/login.css';
+import Axios from "axios";
 
 export default function Home(){
 
@@ -29,9 +30,18 @@ export default function Home(){
     
       const handleLogin = (e) => {
         e.preventDefault();
-    
+        let params = {
+          email: email,
+          password: password,
+        }
+        console.log(params);
+
         if (validateForm()) {
           // Lógica de login aqui, redirecione ou faça o que for necessário
+          Axios.post("http://localhost:3000/", params).then((res) => {
+            console.log(res);
+          });
+
           console.log("Login bem-sucedido!");
         } else {
           setShowError(true); // Exibe a mensagem de erro se houver erro
