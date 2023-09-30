@@ -23,18 +23,23 @@
    background: -moz-linear-gradient(to left, #cfdae0, #dce0e2);
    background: -webkit-linear-gradient(to left, #cfdae0, #dce0e2);
 
-
-
 }
 
 .wrap-login{
-    width: 400px;
-    height: 700px;
+    width: 650px;
+    height: 800px;
     background-color: #ffffff;
     border-radius: 10px;
     overflow: hidden;
     padding: 77px 55px 33px 55px;
     box-shadow: 0 5px 10px 0px rgba(0,0,0,0.2);
+}
+
+.input-group{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0;
 }
 
 .login-form{
@@ -54,29 +59,6 @@
     border-right: 3px solid;
 }
 
-/* Adicione estilos para telas menores que 768px */
-@media (max-width: 768px) {
-    .wrap-login {
-      width: 80%;
-      height: 80%;
-      padding: 50px 20px; /* Reduz o preenchimento */
-    }
-    .login-form-title {
-      font-size: 20px; /* Reduz o tamanho da fonte */
-    }
-  }
-  
-  /* Adicione estilos para telas menores que 480px */
-  @media (max-width: 480px) {
-    .wrap-login {
-        width: 80%;
-        height: 80%;
-      padding: 40px 15px; /* Reduz ainda mais o preenchimento */
-    }
-    .login-form-title {
-      font-size: 18px; /* Reduz ainda mais o tamanho da fonte */
-    }
-  }
 
 @keyframes typing {
     from{
@@ -108,11 +90,20 @@
 }
 
 .wrap-input{
+    display: flex;
+    flex-direction: column;
     width: 100%;
     position: relative;
     border-bottom: 2px solid #adadad;
     margin-bottom: 37px;
+    flex-basis: calc(50% - 10px); /* Divide a largura em 50% com espaço entre os campos */
+    margin-bottom: 20px;
 }
+
+.wrap-input:nth-child(odd) {
+    margin-right: 20px; /* Espaço entre os campos na mesma linha */
+  }
+
 
 .input {
     font-size: 15px;
@@ -195,15 +186,71 @@
     width: 100%;
 }
 
+
+.gender-input{
+    padding: 7px;
+}
+
+.gender-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.62rem;
+    padding: 0 .5rem;
+}
+
+.gender-input {
+    display: flex;
+    align-items: center;
+}
+
+.gender-input input {
+    margin-right: 0.35rem;
+}
+
+.gender-input label {
+    font-size: 0.81rem;
+    font-weight: 600;
+    color: #000000c0;
+}
+
+
+
+
+.optionType-inputs{
+    padding: 7px;
+}
+
+.type-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.62rem;
+    padding: 0 .5rem;
+}
+
+.type-input {
+    display: flex;
+    align-items: center;
+}
+
+.type-input input {
+    margin-right: 0.35rem;
+}
+
+.type-input label {
+    font-size: 0.81rem;
+    font-weight: 600;
+    color: #000000c0;
+}
+
+
 .container-login-form-btn{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding-bottom: 13px;
-    padding-top: 20px;
+    padding-top: 40px;
 
 }
-
 .login-form-btn{
     font-size: 15px;
     border: none;
@@ -214,8 +261,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    width: 100%;
+    width: 70%;
     height: 50px;
 
     background: -o-linear-gradient(to left,#21d4fd, #005f70);
@@ -228,6 +274,7 @@
     cursor:pointer;
 }
 
+
 .error-message {
     font-size: 14px;
     color: #ff0000; /* Cor vermelha para mensagens de erro */
@@ -237,4 +284,80 @@
     margin-left: 10px;
     margin-bottom: 40px;
     padding-bottom: 40px;
+  }
+
+/* Adicione estilos para telas menores que 768px */
+@media (max-width: 768px) {
+    .wrap-login {
+      width: 80%;
+      height: 80%;
+      padding: 50px 20px; /* Reduz o preenchimento */
+    }
+    .login-form-title {
+      font-size: 20px; /* Reduz o tamanho da fonte */
+    }
+    .gender-inputs {
+        margin-top: 2rem;
+    }
+    .gender-group {
+        flex-direction: column;
+    }
+    .gender-title h6 {
+        margin: 0;
+    }
+    .gender-input {
+        margin-top: 0.5rem;
+    }
+    
+
+    .optionType-inputs {
+        margin-top: 2rem;
+    }
+    .type-group {
+        flex-direction: column;
+    }
+    .type-title h6 {
+        margin: 0;
+    }
+    .type-input {
+        margin-top: 0.5rem;
+    }
+  }
+  
+  /* Adicione estilos para telas menores que 480px */
+  @media (max-width: 480px) {
+    .wrap-login {
+        width: 80%;
+        height: 80%;
+      padding: 40px 15px; /* Reduz ainda mais o preenchimento */
+    }
+    .login-form-title {
+      font-size: 18px; /* Reduz ainda mais o tamanho da fonte */
+    }
+    
+    .gender-inputs {
+        margin-top: 2rem;
+    }
+    .gender-group {
+        flex-direction: column;
+    }
+    .gender-title h6 {
+        margin: 0;
+    }
+    .gender-input {
+        margin-top: 0.5rem;
+    }
+
+    .optionType-inputs {
+        margin-top: 2rem;
+    }
+    .type-group {
+        flex-direction: column;
+    }
+    .type-title h6 {
+        margin: 0;
+    }
+    .type-input {
+        margin-top: 0.5rem;
+    }
   }

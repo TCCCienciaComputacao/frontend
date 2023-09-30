@@ -3,12 +3,18 @@
 import logo from '../assets/logo.svg'
 import React, { useState } from 'react';
 import Axios from "axios"
+import InputMask from 'react-input-mask';
 import '../styles/register.css'
 
 export default function Register(){
     const [name, setName] = useState("")
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
+    const [smartphone, setSmartphone] = useState("")
+    const [date, setDate] = useState("")
+    const [cep, setCep] = useState("")
+    const [city, setCity] = useState("")
+    const [uf, setUf] = useState("")
     const [password, setPassword] = useState("")
     const [ConfirmPassword, setConfirmPassword] = useState("")
     const [error, setError] = useState(""); // Estado para a mensagem de erro
@@ -32,7 +38,26 @@ export default function Register(){
         }   else if(ConfirmPassword.trim() === ""){
            setError("* Campo confirmar senha é obrigatório");
            valid = false;
-        }  else {
+        }else if(smartphone.trim() === ""){
+          setError("* Campo celular  é obrigatório");
+          valid = false;
+        } else if(date.trim() === ""){
+          setError("* Campo data de nascimento  é obrigatório");
+          valid = false;
+        }else if(cep.trim() === ""){
+          setError("* Campo CEP é obrigatório");
+          valid = false;
+        }else if(city.trim() === ""){
+          setError("* Campo cidade é obrigatório");
+          valid = false;
+        }else if (uf.trim() === ""){
+          setError("* Campo UF  é obrigatório");
+          valid = false;
+        }else if(password != ConfirmPassword){
+          setError("*Senhas estão Diferentes");
+          valid = false;
+        }
+         else {
           setError(""); // Limpa a mensagem de erro se não houver erro
         }
     
@@ -45,6 +70,11 @@ export default function Register(){
           name: name,
           lastName: lastName,
           email: email,
+          smartphone: smartphone,
+          date: date,
+          cep: cep,
+          city: city,
+          uf:uf,
           password: password,
         }
         console.log(params);
@@ -73,6 +103,31 @@ export default function Register(){
         setEmail(e.target.value);
         setShowError(false); // Oculta a mensagem de erro quando o usuário começa a preencher o campo de email
       };
+
+      const handleSmartphoneChange = (e) => {
+        setSmartphone(e.target.value);
+        setShowError(false); // Oculta a mensagem de erro quando o usuário começa a preencher o campo de email
+      };
+
+      const handleDateChange = (e) => {
+        setDate(e.target.value);
+        setShowError(false); // Oculta a mensagem de erro quando o usuário começa a preencher o campo de email
+      };
+
+      const handleCepChange = (e) => {
+        setCep(e.target.value);
+        setShowError(false); // Oculta a mensagem de erro quando o usuário começa a preencher o campo de email
+      };
+
+      const handleCityChange = (e) => {
+        setCity(e.target.value);
+        setShowError(false); // Oculta a mensagem de erro quando o usuário começa a preencher o campo de email
+      };
+
+      const handleUfChange = (e) => {
+        setUf(e.target.value);
+        setShowError(false); // Oculta a mensagem de erro quando o usuário começa a preencher o campo de email
+      };
     
       const handlePasswordChange = (e) => {
         setPassword(e.target.value);
@@ -95,25 +150,110 @@ export default function Register(){
                             <img src={logo} alt="" />
                         </span>
 
+                      <div className='input-group'>
                         <div className="wrap-input">
-                            <input className={name !== "" ? "has-val input" : "input"} type='text' value={name} onChange={handleNameChange}/>
+                            <input className={name !== "" ? "has-val input" : "input"} type='text' value={name} onChange={handleNameChange} required/>
                             <span className="focus-input" data-placeholder="Nome"></span>
                         </div>
                         <div className="wrap-input">
-                            <input className={lastName !== "" ? "has-val input" : "input"} type='text' value={lastName} onChange={handleLastNameChange}/>
+                            <input className={lastName !== "" ? "has-val input" : "input"} type='text' value={lastName} onChange={handleLastNameChange} required/>
                             <span className="focus-input" data-placeholder="Sobrenome"></span>
                         </div>
                         <div className="wrap-input">
-                           <input className={email !== "" ? "has-val input" : "input"} type="email" value={email} onChange={handleEmailChange}/>
-                           <span className="focus-input" data-placeholder="email"></span>
+                           <input className={email !== "" ? "has-val input" : "input"} type="email" value={email} onChange={handleEmailChange} required/>
+                           <span className="focus-input" data-placeholder="Email"></span>
                         </div>
                         <div className="wrap-input">
-                           <input className={password !== "" ? "has-val input" : "input"} type="password" value={password} onChange={handlePasswordChange}/>
-                           <span className="focus-input" data-placeholder="senha"></span>
+                           <InputMask className={smartphone !== "" ? "has-val input" : "input"} mask="(99)99999-9999" name="number "value={smartphone} onChange={handleSmartphoneChange} required/>
+                           <span className="focus-input" data-placeholder="Celular"></span>
                         </div>
                         <div className="wrap-input">
-                           <input className={ConfirmPassword !== "" ? "has-val input" : "input"} type="password" value={ConfirmPassword} onChange={handleConfirmPassowordChange}/>
+                           <InputMask className={date !== "" ? "has-val input" : "input"} mask="99/99/9999" name="date "value={date} onChange={handleDateChange} required/>
+                           <span className="focus-input" data-placeholder="Data de nascimento"></span>
+                        </div>
+                        <div className="wrap-input">
+                           <InputMask className={cep !== "" ? "has-val input" : "input"} mask="99999-999" name="number "value={cep} onChange={handleCepChange} required/>
+                           <span className="focus-input" data-placeholder="CEP"></span>
+                        </div>
+                        <div className="wrap-input">
+                           <input className={city !== "" ? "has-val input" : "input"} type="text" name="city "value={city} onChange={handleCityChange} required/>
+                           <span className="focus-input" data-placeholder="Cidade"></span>
+                        </div>
+                        <div className="wrap-input">
+                           <input className={uf !== "" ? "has-val input" : "input"} type="text" name="uf "value={uf} onChange={handleUfChange} maxLength={2} required/>
+                           <span className="focus-input" data-placeholder="UF"></span>
+                        </div>
+                        <div className="wrap-input">
+                           <input className={password !== "" ? "has-val input" : "input"} type="password" value={password} onChange={handlePasswordChange} required/>
+                           <span className="focus-input" data-placeholder="Senha"></span>
+                        </div>
+                        <div className="wrap-input">
+                           <input className={ConfirmPassword !== "" ? "has-val input" : "input"} type="password" value={ConfirmPassword} onChange={handleConfirmPassowordChange} required/>
                            <span className="focus-input" data-placeholder="Confirmar senha"></span>
+                        </div>
+
+                        </div>
+
+                        <div className='gender-inputs'>
+                          <div className='gender-title'> 
+                            <h5>Gênero</h5>
+                          </div>
+
+                          < div className='gender-group'>
+
+                            <div className='gender-input'>
+                              <input id='male' type='radio' name='gender'/>
+                              <label for="male">Masculino</label>
+                            </div>
+
+                            <div className='gender-input'>
+                              <input id='female' type='radio' name='gender'/>
+                              <label for="female">Feminino</label>
+                            </div>
+
+                            <div className='gender-input'>
+                              <input id='others' type='radio' name='gender'/>
+                              <label for="others">Outros</label>
+                            </div>
+
+                            <div className='gender-input'>
+                              <input id='none' type='radio' name='gender'/>
+                              <label for="none">Prefiro não dizer</label>
+                            </div>
+
+                          </div>
+
+                        </div>
+
+                        <div className='optionType-inputs'>
+                          <div className='type-title'> 
+                            <h5>Tipo</h5>
+                          </div>
+
+                          < div className='type-group'>
+
+                            <div className='type-input'>
+                              <input id='student' type='radio' name='type' />
+                              <label for="student">Aluno</label>
+                            </div>
+
+                            <div className='type-input'>
+                              <input id='teacher' type='radio' name='type'/>
+                              <label for="teacher">Professor</label>
+                            </div>
+
+                            <div className='type-input'>
+                              <input id='coordinator' type='radio' name='type'/>
+                              <label for="coordinator">Coordenador</label>
+                            </div>
+
+                            <div className='type-input'>
+                              <input id='administrator' type='radio' name='type'/>
+                              <label for="administrator">administrador</label>
+                            </div>
+
+                          </div>
+
                         </div>
 
                         {showError && <span className="error-message">{error}</span>}

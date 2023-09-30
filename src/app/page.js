@@ -37,14 +37,31 @@ export default function Home(){
         console.log(params);
 
         if (validateForm()) {
-          // Lógica de login aqui, redirecione ou faça o que for necessário
+          
           Axios.post("http://localhost:3000/", params).then((res) => {
             console.log(res);
+          }).catch((error)=> {
+            if (error.response) {    
+              if (error.response.status === 401) {
+                console.log("Senha incorreta");
+                setShowError(true);
+                setError("* Senha incorreta");
+              } else if (error.response.status === 404) {
+                console.log("Usuário não encontrado"); 
+                setShowError(true);
+                setError("* Usuário não encontrado");
+              } else {
+                console.error(error.response.data.error);
+              }
+            } else {  
+              console.error("Erro na solicitação:", error.message)   
+              setShowError(true);
+              setError("* Erro na solicitação");
+            }
           });
 
-          console.log("Login bem-sucedido!");
         } else {
-          setShowError(true); // Exibe a mensagem de erro se houver erro
+          setShowError(true);
         }
       };
     
@@ -70,7 +87,7 @@ export default function Home(){
                         <span className="login-form-title-img">
                             <img src={logo} alt="" />
                         </span>
-
+                      
                         <div className="wrap-input">
                            <input className={email !== "" ? "has-val input" : "input"} type="email" value={email} onChange={handleEmailChange}/>
                            <span className="focus-input" data-placeholder="email"></span>
