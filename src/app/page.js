@@ -40,6 +40,7 @@ export default function Home(){
           
           Axios.post("http://localhost:3000/", params).then((res) => {
             console.log(res);
+            
           }).catch((error)=> {
             if (error.response) {    
               if (error.response.status === 401) {

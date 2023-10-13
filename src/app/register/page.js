@@ -5,9 +5,10 @@ import React, { useState } from 'react';
 import Axios from "axios"
 import InputMask from 'react-input-mask';
 import '../styles/register.css'
+import { Router } from 'react-router';
 
 export default function Register(){
-    const [name, setName] = useState("")
+    const [nome, setName] = useState("")
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [smartphone, setSmartphone] = useState("")
@@ -23,7 +24,7 @@ export default function Register(){
     const validateForm = () => {
         let valid = true;
     
-        if (name.trim() === "") {
+        if (nome.trim() === "") {
           setError("* Campo de nome é obrigatório");
           valid = false;
         } else if (lastName.trim() === "") {
@@ -67,22 +68,23 @@ export default function Register(){
       const handleLogin = (e) => {
         e.preventDefault();
         let params = {
-          name: name,
-          lastName: lastName,
+          nome: nome,
+          sobrenome: lastName,
           email: email,
-          smartphone: smartphone,
-          date: date,
+          celular: smartphone,
+          dataNascimento: date,
           cep: cep,
-          city: city,
+          cidade: city,
           uf:uf,
-          password: password,
+          senha: password,
         }
         console.log(params);
 
         if (validateForm()) {
-          Axios.post("http://localhost:3000/register", params).then((res) => {
+          Axios.post("http://localhost:8080/register/", params).then((res) => {
           console.log(res);
-        });
+          alert('Usuário cadastrado com Sucesso');
+        })
         } else {
           setShowError(true); // Exibe a mensagem de erro se houver erro
         }
@@ -152,7 +154,7 @@ export default function Register(){
 
                       <div className='input-group'>
                         <div className="wrap-input">
-                            <input className={name !== "" ? "has-val input" : "input"} type='text' value={name} onChange={handleNameChange} required/>
+                            <input className={nome !== "" ? "has-val input" : "input"} type='text' value={nome} onChange={handleNameChange} required/>
                             <span className="focus-input" data-placeholder="Nome"></span>
                         </div>
                         <div className="wrap-input">
@@ -164,23 +166,23 @@ export default function Register(){
                            <span className="focus-input" data-placeholder="Email"></span>
                         </div>
                         <div className="wrap-input">
-                           <InputMask className={smartphone !== "" ? "has-val input" : "input"} mask="(99)99999-9999" name="number "value={smartphone} onChange={handleSmartphoneChange} required/>
+                           <InputMask className={smartphone !== "" ? "has-val input" : "input"} mask="(99)99999-9999" nome="number "value={smartphone} onChange={handleSmartphoneChange} required/>
                            <span className="focus-input" data-placeholder="Celular"></span>
                         </div>
                         <div className="wrap-input">
-                           <InputMask className={date !== "" ? "has-val input" : "input"} mask="99/99/9999" name="date "value={date} onChange={handleDateChange} required/>
+                           <InputMask className={date !== "" ? "has-val input" : "input"} mask="9999-99-99" nome="date "value={date} onChange={handleDateChange} required/>
                            <span className="focus-input" data-placeholder="Data de nascimento"></span>
                         </div>
                         <div className="wrap-input">
-                           <InputMask className={cep !== "" ? "has-val input" : "input"} mask="99999-999" name="number "value={cep} onChange={handleCepChange} required/>
+                           <InputMask className={cep !== "" ? "has-val input" : "input"} mask="99999-999" nome="number "value={cep} onChange={handleCepChange} required/>
                            <span className="focus-input" data-placeholder="CEP"></span>
                         </div>
                         <div className="wrap-input">
-                           <input className={city !== "" ? "has-val input" : "input"} type="text" name="city "value={city} onChange={handleCityChange} required/>
+                           <input className={city !== "" ? "has-val input" : "input"} type="text" nome="city "value={city} onChange={handleCityChange} required/>
                            <span className="focus-input" data-placeholder="Cidade"></span>
                         </div>
                         <div className="wrap-input">
-                           <input className={uf !== "" ? "has-val input" : "input"} type="text" name="uf "value={uf} onChange={handleUfChange} maxLength={2} required/>
+                           <input className={uf !== "" ? "has-val input" : "input"} type="text" nome="uf "value={uf} onChange={handleUfChange} maxLength={2} required/>
                            <span className="focus-input" data-placeholder="UF"></span>
                         </div>
                         <div className="wrap-input">
@@ -202,22 +204,22 @@ export default function Register(){
                           < div className='gender-group'>
 
                             <div className='gender-input'>
-                              <input id='male' type='radio' name='gender'/>
+                              <input id='male' type='radio' nome='gender'/>
                               <label for="male">Masculino</label>
                             </div>
 
                             <div className='gender-input'>
-                              <input id='female' type='radio' name='gender'/>
+                              <input id='female' type='radio' nome='gender'/>
                               <label for="female">Feminino</label>
                             </div>
 
                             <div className='gender-input'>
-                              <input id='others' type='radio' name='gender'/>
+                              <input id='others' type='radio' nome='gender'/>
                               <label for="others">Outros</label>
                             </div>
 
                             <div className='gender-input'>
-                              <input id='none' type='radio' name='gender'/>
+                              <input id='none' type='radio' nome='gender'/>
                               <label for="none">Prefiro não dizer</label>
                             </div>
 
@@ -233,22 +235,22 @@ export default function Register(){
                           < div className='type-group'>
 
                             <div className='type-input'>
-                              <input id='student' type='radio' name='type' />
+                              <input id='student' type='radio' nome='type' />
                               <label for="student">Aluno</label>
                             </div>
 
                             <div className='type-input'>
-                              <input id='teacher' type='radio' name='type'/>
+                              <input id='teacher' type='radio' nome='type'/>
                               <label for="teacher">Professor</label>
                             </div>
 
                             <div className='type-input'>
-                              <input id='coordinator' type='radio' name='type'/>
+                              <input id='coordinator' type='radio' nome='type'/>
                               <label for="coordinator">Coordenador</label>
                             </div>
 
                             <div className='type-input'>
-                              <input id='administrator' type='radio' name='type'/>
+                              <input id='administrator' type='radio' nome='type'/>
                               <label for="administrator">administrador</label>
                             </div>
 

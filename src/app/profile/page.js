@@ -1,6 +1,7 @@
 'use client'
 
 import '../styles/profile.css'
+import  NavBar from '../navBar/page';
 // import Logo from '../assets/user.png'
 import React, { useState, Image } from 'react';
 import { FaIdCard } from "react-icons/fa";
@@ -12,7 +13,9 @@ import { FaUsers } from "react-icons/fa";
 export default function Home() {
 
     return (
+        
         <body>
+            <NavBar></NavBar>
             <div className="title-bar">
                 <h1>DADOS DO CADASTRO</h1>
             </div>
