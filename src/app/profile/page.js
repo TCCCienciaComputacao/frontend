@@ -1,7 +1,7 @@
 'use client'
 
 import '../styles/profile.css'
-import  NavBar from '../navBar/page';
+import  NavBar from '../components/navbar';
 // import Logo from '../assets/user.png'
 import React, { useState, Image } from 'react';
 import { FaIdCard } from "react-icons/fa";
