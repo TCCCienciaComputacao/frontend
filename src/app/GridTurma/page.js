@@ -36,6 +36,7 @@ export default function GridTurmas() {
         event.preventDefault();
         axios.post("http://localhost:8080/api/turmas/", turma).then(result => {
             console.log(result);
+            alert("Turma cadastrada com sucesso")
         });
     }
 
