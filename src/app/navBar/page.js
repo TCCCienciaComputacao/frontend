@@ -19,14 +19,16 @@ export default function NavBar() {
                 <Link href='#' className='IconMenu'>
                     <FaIcons.FaBars onClick={showSidebar} />
                 </Link>
-                <div className='IconNotification'>
-                    <IoIcons.IoIosNotificationsOutline/>
+                <div className='Icon-area'>
+                    <div className='IconNotification'>
+                        <IoIcons.IoIosNotificationsOutline />
+                    </div>
+                    <div className='IconContact'>
+                        <IoIcons.IoIosContact />
+                    </div>
                 </div>
-                <div className='IconContact'>
-                    <IoIcons.IoIosContact/>
-                </div>
-               
-                
+
+
             </div>
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                 <ul className='nav-menu-items' onClick={showSidebar}>
@@ -45,7 +47,7 @@ export default function NavBar() {
                             </li>
                         )
                     })}
-                    
+
 
                 </ul>
             </nav>

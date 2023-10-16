@@ -9,7 +9,7 @@
     background-color: #000000;
     height: 60px;
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
     background: -o-linear-gradient(to left,#cfdae0, #dce0e2);
     background: linear-gradient(to left, #cfdae0, #dce0e2);
@@ -29,28 +29,22 @@
     font-size: 2rem;
     color:#000000; 
   }
+  .Icon-area{
+    display: flex;
+    align-items: center;
+  }
 
   .IconNotification {
     background-color: #000000;
-    margin-left: 2rem;
     font-size: 2rem;
     background: none;
-    position: absolute;
-    left: 95.5%; /* Ajuste a posição horizontal conforme necessário */
-    top: 3.5%; /* Ajuste a posição vertical conforme necessário */
-    transform: translateY(-50%);
     cursor: pointer;
   }
 
   .IconContact {
     background-color: #000000;
-    margin-left: 2rem;
     font-size: 2.5rem;
     background: none;
-    position: absolute;
-    left: 97%; /* Ajuste a posição horizontal conforme necessário */
-    top: 3.5%; /* Ajuste a posição vertical conforme necessário */
-    transform: translateY(-50%);
     cursor: pointer;
   }
 
