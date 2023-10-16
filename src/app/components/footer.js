@@ -1,8 +1,9 @@
 'use client'
 
-import '../styles/footer.css'
+
 import React, { Component } from 'react';
 import Link from 'next/link';
+import '../styles/footer.css'
 
 const current_year = new Date().getFullYear();
 function Footer() {

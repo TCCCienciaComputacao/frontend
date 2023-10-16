@@ -22,7 +22,7 @@ export default function Home(){
           setError("* Campo de senha é obrigatório");
           valid = false;
         } else {
-          setError(""); // Limpa a mensagem de erro se não houver erro
+          setError("");
         }
     
         return valid;
@@ -32,25 +32,25 @@ export default function Home(){
         e.preventDefault();
         let params = {
           email: email,
-          password: password,
+          senha: password,
         }
         console.log(params);
 
         if (validateForm()) {
           
-          Axios.post("http://localhost:3000/", params).then((res) => {
+          Axios.post("http://localhost:8080/api/usuarios/login", params).then((res) => {
             console.log(res);
             
           }).catch((error)=> {
             if (error.response) {    
               if (error.response.status === 401) {
-                console.log("Senha incorreta");
+                console.log(" Credenciais inválidas");
                 setShowError(true);
-                setError("* Senha incorreta");
+                setError(" Credenciais inválidas");
               } else if (error.response.status === 404) {
-                console.log("Usuário não encontrado"); 
+                console.log(" Credenciais inválidas"); 
                 setShowError(true);
-                setError("* Usuário não encontrado");
+                setError(" Credenciais inválidas");
               } else {
                 console.error(error.response.data.error);
               }
@@ -68,12 +68,12 @@ export default function Home(){
     
       const handleEmailChange = (e) => {
         setEmail(e.target.value);
-        setShowError(false); // Oculta a mensagem de erro quando o usuário começa a preencher o campo de email
+        setShowError(false); 
       };
     
       const handlePasswordChange = (e) => {
         setPassword(e.target.value);
-        setShowError(false); // Oculta a mensagem de erro quando o usuário começa a preencher o campo de senha
+        setShowError(false);
       };
     
       
