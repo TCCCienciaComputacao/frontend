@@ -1,8 +1,18 @@
 'use client'
 
 import '../styles/profile.css'
+<<<<<<< HEAD
 import NavBar from '../navBar/page';
 // import Logo from '../assets/user.png';
+=======
+<<<<<<< HEAD
+import NavBar from '../navBar/page';
+// import Logo from '../assets/user.png';
+=======
+import  NavBar from '../components/navbar';
+// import Logo from '../assets/user.png'
+>>>>>>> 762e6507617d273bb9f64d5be7a6fa1e0da0c2f3
+>>>>>>> 3f4880c41bc62cfc220b5d765f795cf3c915688d
 import React, { useState, Image } from 'react';
 import { FaIdCard } from "react-icons/fa";
 import { FaInfo } from "react-icons/fa";
