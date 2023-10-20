@@ -5,9 +5,20 @@ import axios from "axios";
 import '../styles/gridturma.css'
 
 export default function GridTurmas() {
-    const [turma, setTurma] = useState({ nometurma: '', nivelano: '', periodosid: ''});
+    const [turma, setTurma] = useState({ nometurma: '', nivelano: '', periodosid: '' });
     const [periodos, setPeriodos] = useState([]);
-   
+    const [turmas, setTurmas] = useState([]);
+    const [atualizar, setAtualizar] = useState();
+
+    function getPeriodoNome(periodoid) {
+        const periodo = periodos.find(p => p.id === periodoid);
+
+        if (periodo) {
+            return periodo.nomeperiodo;
+        }
+
+        return 'Período não encontrado';
+    }
 
     // Função para buscar os períodos
     useEffect(() => {
@@ -20,23 +31,59 @@ export default function GridTurmas() {
             });
     }, []);
 
+    useEffect(() => {
+        async function fetchTurmas() {
+            try {
+                const response = await axios.get('http://localhost:8080/api/turmas/');
+                setTurmas(response.data);
+            } catch (error) {
+                console.error('Erro ao buscar as turmas:', error);
+            }
+        }
+
+        fetchTurmas();
+    }, [atualizar]);
+
     function handleChange(event) {
         
         if (event.target.name === "periodosid") {
             setTurma({
-              ...turma,
-              periodos: { id: event.target.value }
+                ...turma,
+                periodos: { id: event.target.value }
             });
-          } else {
+        } else {
             setTurma({ ...turma, [event.target.name]: event.target.value });
-          }
+        }
+    }
+
+    function limpar(){
+        setTurma({ nometurma: '', nivelano: '', periodosid: '' }) 
     }
 
     function HandleSubmit(event) {
         event.preventDefault();
-        axios.post("http://localhost:8080/api/turmas/", turma).then(result => {
-            console.log(result);
-            alert("Turma cadastrada com sucesso")
+        if (turma.id == undefined) {
+            console.log("inserir")
+            axios.post("http://localhost:8080/api/turmas/", turma).then(result => {
+                alert("Turma cadastrada com sucesso")
+                setAtualizar(result);
+
+            });
+        } else {
+            axios.put("http://localhost:8080/api/turmas/", turma).then(result => {
+                alert("Turma cadastrada com sucesso")
+                setAtualizar(result);
+
+            });
+        }
+
+        limpar();
+
+    }
+
+    function excluir(id){
+        axios.delete("http://localhost:8080/api/turmas/"+id).then(result => {
+            setAtualizar(result);
         });
     }
 
@@ -48,18 +95,18 @@ export default function GridTurmas() {
                 integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossOrigin="anonymous"></script>
 
             <div className="container">
-                <h1>Cadastro</h1>
+                <h2>Cadastro de turma</h2>
                 <form onSubmit={HandleSubmit}>
                     <div className="col-6">
 
                         <div>
                             <label className="form-label">Nome da Turma</label>
-                            <input onChange={handleChange} value={turma.nometurma} name="nometurma" type="text" className="form-control" required/>
+                            <input onChange={handleChange} value={turma.nometurma} name="nometurma" type="text" className="form-control" required />
                         </div>
 
                         <div>
                             <label className="form-label">Semestre</label>
-                            <input onChange={handleChange} value={turma.nivelano} name="nivelano" type="text" className="form-control" required/>
+                            <input onChange={handleChange} value={turma.nivelano} name="nivelano" type="text" className="form-control" required />
                         </div>
                         <div>
                             <label className="form-label">Período</label>
@@ -69,14 +116,40 @@ export default function GridTurmas() {
                                     <option key={periodo.id} value={periodo.id}>
                                         {periodo.nomeperiodo}
                                     </option>
-                            ))}
+                                ))}
                             </select>
                         </div>
-                        <br/>
+                        <br />
                         <input type="submit" value="Cadastrar" className="btn btn-success"></input>
 
                     </div>
                 </form>
+
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Semestre</th>
+                            <th scope="col">Periodo</th>
+                            <th scope="col">Opções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {turmas.map(tur => (
+                            <tr key={tur.id}>
+                                <td>{tur.nometurma}</td>
+                                <td>{tur.nivelano}</td>
+                                <td>{getPeriodoNome(tur.periodos.id)}</td>
+                                <td>
+                                    <button onClick={() => setTurma(tur)} className="btn btn-primary">Alterar</button>&nbsp;&nbsp;
+                                    <button onClick={() => excluir(tur.id)} className="btn btn-danger">Excluir</button>&nbsp;&nbsp;
+                                    <button className="btn btn-warning">Cancelar</button>
+                                </td>
+                            </tr>
+                        ))}
+
+                    </tbody>
+                </table>
             </div>
         </div>
     )
