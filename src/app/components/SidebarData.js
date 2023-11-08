@@ -4,19 +4,7 @@ import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 
 export const SidebarData = [
-    {
-        title: 'Início',
-        path: '/',
-        icon: <AiIcons.AiFillHome/>,
-        cName: 'nav-text'
-    },    
 
-    {
-        title: 'Chat',
-        path: '/chat',
-        icon: <IoIcons.IoIosChatboxes/>,
-        cName: 'nav-text'
-    },   
     {
         title: 'Calendário',
         path: '/calendario',
@@ -25,8 +13,8 @@ export const SidebarData = [
     },    
 
     {
-        title: 'Turma',
-        path: '/turma',
+        title: 'Turmas',
+        path: '/turmas',
         icon: <IoIcons.IoMdPeople/>,
         cName: 'nav-text'
     },   
