@@ -17,6 +17,10 @@
     background: -webkit-linear-gradient(to left, #cfdae0, #dce0e2);
   }
   
+  .nav-container{
+    flex-wrap: wrap;
+  }
+
   .menu-bars {
     background-color: #000000;
     margin-left: 2rem;
@@ -25,36 +29,37 @@
   }
 
   .IconMenu {
+
     margin-left: 2rem;
     font-size: 2rem;
     color:#000000; 
   }
 
-  .IconNotification {
-    background-color: #000000;
-    margin-left: 2rem;
-    font-size: 2rem;
-    background: none;
-    position: absolute;
-    left: 95.5%; /* Ajuste a posição horizontal conforme necessário */
-    top: 3.5%; /* Ajuste a posição vertical conforme necessário */
-    transform: translateY(-50%);
-    cursor: pointer;
-  }
-
+  .IconNotification,
   .IconContact {
-    background-color: #000000;
-    margin-left: 2rem;
-    font-size: 2.5rem;
-    background: none;
-    position: absolute;
-    left: 97%; /* Ajuste a posição horizontal conforme necessário */
-    top: 3.5%; /* Ajuste a posição vertical conforme necessário */
-    transform: translateY(-50%);
-    cursor: pointer;
+      
+      font-size: 2rem;
+      cursor: pointer;
   }
-
+  
+  .IconNotification {
+      margin-left: 1.5rem;
+      position: absolute;
+      right: 2rem; /* Ajuste a posição horizontal conforme necessário */
+      top: 50%;
+      transform: translateY(-50%);
+  }
+  
+  .IconContact {
+      margin-left: 1rem;
+      position: absolute;
+      right: 4.5rem; /* Ajuste a posição horizontal conforme necessário */
+      top: 50%;
+      transform: translateY(-50%);
+  }
+  
   .nav-menu {
+  
     background-color: #000000;
     width: 200px;
     height: 100vh;
@@ -84,11 +89,24 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    padding: 8px 0px 8px 16px;
     list-style: none;
     height: 60px;
   }
+
+
+  .content-shift {
+    margin-left: 200px; /* Ajuste o valor conforme necessário */
+    transition: margin-left 350ms ease-out; /* Efeito de transição suave */
+  }
+
+  .page-content {
+    transition: margin-left 350ms;
+  }
   
+  .page-content.shifted {
+    margin-left: 200px; /* Ajuste a largura do menu conforme necessário */
+  }
+
   .nav-text a {
     text-decoration: none;
     color: #000000;
@@ -97,7 +115,7 @@
     height: 100%;
     display: flex;
     align-items: center;
-    padding: 0 16px;
+    
     border-radius: 4px;
   }
   
@@ -115,7 +133,8 @@
     height: 80px;
     display: flex;
     justify-content: start;
-    align-items: center;
+
+
 
     background: -o-linear-gradient(to left,#cfdae0, #dce0e2);
     background: linear-gradient(to left, #cfdae0, #dce0e2);

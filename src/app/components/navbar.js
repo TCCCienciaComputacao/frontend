@@ -6,25 +6,24 @@ import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 
 import React, { useState } from 'react';
-import Link from 'next/link'
-import { SidebarData } from './SidebarData'
+import Link from 'next/link';
+import { SidebarData } from './SidebarData';
 
 export default function NavBar() {
-    const [sidebar, setSideBar] = useState(false);
-    const showSidebar = () => setSideBar(!sidebar);
+  const [sidebar, setSideBar] = useState(false);
+  const showSidebar = () => setSideBar(!sidebar);
 
-    const [showSubmenu, setShowSubmenu] = useState(false);
+  const [showSubmenu, setShowSubmenu] = useState(false);
 
-  
-    const handleConfigClick = () => {
-      setShowSubmenu(!showSubmenu);
-    };
+  const handleConfigClick = () => {
+    setShowSubmenu(!showSubmenu);
+  };
 
-    return (
-        <>
-      <div className='navbar'>
-        <div className='IconMenu'>
-          <FaIcons.FaBars onClick={showSidebar} />
+  return (
+    <>
+      <div className={`navbar ${sidebar ? 'active' : ''}`}>
+        <div className='IconMenu' onClick={showSidebar}>
+          <FaIcons.FaBars />
         </div>
         <div className='IconNotification'>
           <IoIcons.IoIosNotificationsOutline />
@@ -56,16 +55,6 @@ export default function NavBar() {
           })}
         </ul>
       </nav>
-      {showSubmenu && (
-        <div className='submenu'>
-          <ul>
-            <li>Submenu Item 1</li>
-            <li>Submenu Item 2</li>
-            <li>Submenu Item 3</li>
-            {/* Adicione mais itens de submenu, se necessário */}
-          </ul>
-        </div>
-      )}
     </>
   );
 }
