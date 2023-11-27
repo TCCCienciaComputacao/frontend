@@ -4,6 +4,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import GradeHorarios from "./GradeHorarios.js"; // Importe o componente GradeHorarios
 import { useNavigate } from "react-router-dom"; 
+import { jsPDF } from 'jspdf';
+import 'jspdf-autotable';
+
 
 export default function Grade() {
     const [turmas, setTurmas] = useState([]);
@@ -13,7 +16,31 @@ export default function Grade() {
     const handleVoltar = () => {
         navigate('/home'); // Navegue de volta para a página inicial ao clicar no botão "Voltar"
     };
+
+    const handlePrint = () => {
+        const doc = new jsPDF();
     
+        // Cria a matriz de dados a partir da função convertToGradeData
+        const gradeData = convertToGradeData(gradeGerada);
+    
+        // Nomes dos dias da semana
+        const diasDaSemana = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'];
+    
+        // Cabeçalho da tabela do PDF
+        const headers = ['Dia da semana', 'Aula 1', 'Aula 2'];
+    
+        // Dados da tabela do PDF
+        const body = gradeData.map((row, index) => [diasDaSemana[index], row[0], row[1]]);
+    
+        doc.autoTable({
+            head: [headers],
+            body: body
+        });
+    
+        // Baixa o PDF quando o botão de impressão é clicado
+        doc.save('grade.pdf');
+    };
+
     useEffect(() => {
         async function fetchTurmas() {
             try {
@@ -72,7 +99,7 @@ export default function Grade() {
             </div>
 
             <br />
-            <input type="submit" value="Imprimir" className="btn btn-success"></input>
+            <input type="submit" value="Imprimir" className="btn btn-success" onClick={handlePrint}></input>
 
 
             <button onClick={handleVoltar} className="btn btn-danger">

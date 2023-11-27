@@ -250,6 +250,14 @@ body{
     text-decoration: none;
 }
 
+.cadastrar{
+    font-size: 14px;
+    color: #000000;
+    line-height: 1.5;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .text-createAccount{
     font-size: 14px;
     color: #000000;

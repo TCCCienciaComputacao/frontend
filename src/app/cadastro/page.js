@@ -5,6 +5,7 @@ import Axios from 'axios';
 import InputMask from 'react-input-mask';
 import '../styles/register.css';
 import logo from '../assets/logo.svg';
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [usuario, setUsuario] = useState({
@@ -22,6 +23,12 @@ export default function Register() {
   const [enderecos, setEnderecos] = useState([]);
   const [error, setError] = useState('');
   const [showError, setShowError] = useState(false);
+  const navigate = useNavigate();
+
+  const handleHome= () => {
+    navigate('/home'); // Navegue de volta para a página inicial ao clicar no botão "Voltar"
+  };
+
 
   useEffect(() => {
     // Busque as cidades do servidor assim que o componente for montado
@@ -141,7 +148,7 @@ export default function Register() {
         .then((res) => {
           console.log(res);
           alert('Usuário cadastrado com sucesso');
-        
+          handleHome();
         })
         .catch((error) => {
           console.error('Erro ao cadastrar usuário:', error);
