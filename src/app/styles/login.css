@@ -2,11 +2,20 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+   
+}
+
+body{
+    background: -o-linear-gradient(to left,#cfdae0, #dce0e2);
+    background: linear-gradient(to left, #cfdae0, #dce0e2);
+    background: -moz-linear-gradient(to left, #cfdae0, #dce0e2);
+    background: -webkit-linear-gradient(to left, #cfdae0, #dce0e2);
 }
 
 .container {
     width: 100%;
     margin: 0 auto;
+   
 }
 
 .container-login{

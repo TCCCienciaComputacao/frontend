@@ -1,0 +1,36 @@
+.gender-input{
+    padding: 7px;
+}
+
+.gender-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.62rem;
+    padding: 0 .5rem;
+}
+
+.gender-input {
+    display: flex;
+    align-items: center;
+}
+
+.gender-input input {
+    margin-right: 0.35rem;
+}
+
+.gender-input label {
+    font-size: 0.81rem;
+    font-weight: 600;
+    color: #000000c0;
+}
+
+
+.form-select{
+    padding: 4px;
+}
+
+.btn-danger{
+    padding: 10px;
+    margin: 10px;
+}
+

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import axios from "axios";
 
-import '../styles/app.css'
+import '../styles/todolist.css'
 
 const CreateTaskPopup = ({ modal, toggle, save }) => {
     const [aviso, setAviso] = useState({
@@ -12,6 +12,7 @@ const CreateTaskPopup = ({ modal, toggle, save }) => {
         professoresid: ''
     });
     const [avisos, setAvisos] = useState([]);
+    const [professores, setProfessores] = useState([]);
     
     useEffect(() => {
         // Buscar a lista de professores ou avisos do backend
@@ -46,6 +47,20 @@ const CreateTaskPopup = ({ modal, toggle, save }) => {
             });
     }
 
+    
+    useEffect(() => {
+        async function fetchProfessores() {
+            try {
+                const response = await axios.get('http://localhost:8080/api/professores/');
+                setProfessores(response.data);
+            } catch (error) {
+                console.log('Erro ao buscar os professores: ', error);
+            }
+        }
+
+        fetchProfessores();
+    }, []);
+
     return (
         <Modal isOpen={modal} toggle={toggle}>
             <ModalHeader toggle={toggle}>Create Task</ModalHeader>
@@ -79,9 +94,9 @@ const CreateTaskPopup = ({ modal, toggle, save }) => {
                         required
                     >
                         <option value="">Selecione professor</option>
-                        {avisos.map(professor => (
+                        {professores.map(professor => (
                             <option key={professor.id} value={professor.id}>
-                                {professor.idusuario}
+                                {professor.usuario.nome}
                             </option>
                         ))}
                     </select>

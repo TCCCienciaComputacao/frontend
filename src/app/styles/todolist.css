@@ -1,0 +1,185 @@
+.header{
+    height: 50px;
+    width: 100%;
+    background-color: #777777;
+    padding-top: 50px;
+  }
+  
+  .container--total {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+  }
+  
+  .card-container{
+    height: 300px;
+    width: 500px;
+    box-shadow: 0px 3px 50px #A5A5A5;
+  }
+  
+  .card-wrapper{
+    width: 270px; 
+    height: 200px; 
+    box-shadow: 0px 3px 50px #A5A5A5;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 30px;
+  }
+  
+  .card-top{
+    width: 100%;
+    height: 2%;
+  }
+  
+  .task-holder{
+    width: 100%;
+    height: 98%;
+    padding: 10px 10px;
+    display : flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .card-header{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 80px;
+    height: 30px;
+    padding: 1px 1px !important;
+    text-align: center;
+  }
+  
+  .fa-edit{
+    margin-right: 10px;
+  }
+  .task-container{
+    height: auto;
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+    padding-bottom: 30px;
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  
+  .container--btn {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    margin-right: 120px;
+  }
+  
+  .mt-2 {
+    width: 15%;
+    color: #c24d2c;
+  }
+  
+ 
+  .flex--menu {
+    width: 60%;
+    padding-top: 2rem;
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  
+  .text--menu {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2rem;
+    padding-left: 7rem;
+  }
+  /*--------------------------------------*/
+  /*Botões das grids*/
+  .btn--menus {
+    font-family: 'Quicksand', sans-serif;
+    color: #FFF;
+    height: 100%;
+    width: 100%;
+    font-size: 3rem;
+    background: #345475;
+    border-color: transparent;
+    border-radius: 10px;
+  }
+  .btn--menus:hover {
+    transition: 0.5s ease-in-out;
+    background: #c24d2c;
+    color: #fff;
+  }
+  
+  /*--------------------------------------*/
+  
+  /*Primeira linha das grids*/
+  .box2 {
+    width: 19rem;
+    height: 100px;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow:  3px 3px 10px #0e01019c,
+    -10px -10px 30px #0a01011a;
+  }
+  
+  .flex2 {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding-bottom: 2rem;
+  }
+  /*--------------------------------------*/
+  
+  /*--------------------------------------*/
+  /*Segunda linha das grids*/
+  .box3 {
+    width: 19rem;
+    height: 100px;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow:  3px 3px 10px #0e01019c,
+    -10px -10px 30px #0a01011a;
+  }
+  
+  .flex3 {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding-bottom: 2rem;
+  }
+  /*--------------------------------------*/
+  
+  /*--------------------------------------*/
+  /*Terceira linha das grids*/
+  .box4 {
+    width: 300px;
+    height: 200px;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow:  3px 3px 10px #0e01019c,
+    -10px -10px 30px #0a01011a;
+  }
+  
+  .flex4 {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding-bottom: 6rem;
+  }
+  /*--------------------------------------*/
+  

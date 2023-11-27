@@ -141,6 +141,7 @@ export default function Register() {
         .then((res) => {
           console.log(res);
           alert('Usuário cadastrado com sucesso');
+        
         })
         .catch((error) => {
           console.error('Erro ao cadastrar usuário:', error);

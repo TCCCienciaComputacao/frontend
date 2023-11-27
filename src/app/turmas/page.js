@@ -1,15 +1,16 @@
 'use client'
 
 import React, { useState, useEffect } from "react";
-import  NavBar from '../components/navbar';
 import axios from "axios";
 import '../styles/gridturma.css'
+import { useNavigate } from "react-router-dom"; 
 
 export default function GridTurmas() {
     const [turma, setTurma] = useState({ nometurma: '', nivelano: '', periodosid: '' });
     const [periodos, setPeriodos] = useState([]);
     const [turmas, setTurmas] = useState([]);
     const [atualizar, setAtualizar] = useState();
+    const navigate = useNavigate();
 
     function getPeriodoNome(periodoid) {
         const periodo = periodos.find(p => p.id === periodoid);
@@ -20,6 +21,10 @@ export default function GridTurmas() {
 
         return 'Período não encontrado';
     }
+
+    const handleVoltar = () => {
+        navigate('/home'); // Navegue de volta para a página inicial ao clicar no botão "Voltar"
+    };
 
     // Função para buscar os períodos
     useEffect(() => {
@@ -46,7 +51,7 @@ export default function GridTurmas() {
     }, [atualizar]);
 
     function handleChange(event) {
-        
+
         if (event.target.name === "periodosid") {
             setTurma({
                 ...turma,
@@ -57,8 +62,8 @@ export default function GridTurmas() {
         }
     }
 
-    function limpar(){
-        setTurma({ nometurma: '', nivelano: '', periodosid: '' }) 
+    function limpar() {
+        setTurma({ nometurma: '', nivelano: '', periodosid: '' })
     }
 
     function HandleSubmit(event) {
@@ -82,22 +87,17 @@ export default function GridTurmas() {
 
     }
 
-    function excluir(id){
-        axios.delete("http://localhost:8080/api/turmas/"+id).then(result => {
+    function excluir(id) {
+        axios.delete("http://localhost:8080/api/turmas/" + id).then(result => {
             setAtualizar(result);
         });
 
-       
+
     }
 
     return (
-        
-        <div>    
-            <div className="na">
-            <NavBar></NavBar>
-            </div>
-           
-            
+
+        <div>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
                 integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossOrigin="anonymous"></link>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -131,7 +131,7 @@ export default function GridTurmas() {
                         <br />
                         <input type="submit" value="Cadastrar" className="btn btn-success"></input>
 
-                    </div>
+                    </div>&nbsp;&nbsp;
                 </form>
 
                 <table className="table">
@@ -155,10 +155,15 @@ export default function GridTurmas() {
                                 </td>
                             </tr>
                         ))}
+                        <button onClick={handleVoltar} className="btn btn-danger">
+                            Voltar
+                        </button>
+
 
                     </tbody>
                 </table>
             </div>
+
         </div>
     )
 }

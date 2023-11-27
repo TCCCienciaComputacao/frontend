@@ -5,52 +5,41 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom"; 
 
 export default function grade() {
-    const [turmaProfessor, setTurmaProfessor] = useState({ turmas: '', professores: '' })
-    const [turmasProfessores, setTurmasProfessores] = useState([])
-    const [turmas, setTurmas] = useState([]);
+    const [materiaProfessor, setmateriaProfessor] = useState({ materias: '', professores: '' })
+    const [materiasProfessores, setmateriasProfessores] = useState([])
+    const [materias, setmaterias] = useState([]);
     const [professores, setProfessores] = useState([]);
     const [atualizar, setAtualizar] = useState();
     const navigate = useNavigate();
-    
 
     const handleVoltar = () => {
         navigate('/home'); // Navegue de volta para a página inicial ao clicar no botão "Voltar"
     };
 
-    function getTurmaNome(turmaid) {
-        const turma = turmas.find(t => t.id === turmaid);
 
-        if (turma) {
-            return turma.nometurma;
-        }
+    function preencherCampos(matPro) {
+        const id = matPro.id || '';
+        const materiaId = matPro.materias ? matPro.materias.id : '';
+        const professorId = matPro.professores ? matPro.professores.id : '';
 
-        return 'turma não encontrada';
-    }
-
-    function preencherCampos(turPro) {
-        const id = turPro.id || '';
-        const turmaId = turPro.turmas ? turPro.turmas.id : '';
-        const professorId = turPro.professores ? turPro.professores.id : '';
-        const navigate = useNavigate();
-
-        setTurmaProfessor({
+        setmateriaProfessor({
             id: id,
-            turmas: turmaId,
+            materias: materiaId,
             professores: professorId
         });
     }
 
     useEffect(() => {
-        async function fetchTurmas() {
+        async function fetchmaterias() {
             try {
-                const response = await axios.get('http://localhost:8080/api/turmas/');
-                setTurmas(response.data);
+                const response = await axios.get('http://localhost:8080/api/materias/');
+                setmaterias(response.data);
             } catch (error) {
-                console.error('Erro ao buscar as turmas:', error);
+                console.error('Erro ao buscar as materias:', error);
             }
         }
 
-        fetchTurmas();
+        fetchmaterias();
     }, []);
 
 
@@ -70,10 +59,10 @@ export default function grade() {
     useEffect(() => {
         async function fetchProfessores() {
             try {
-                const response = await axios.get('http://localhost:8080/api/turmasprofessores/professores');
-                setTurmasProfessores(response.data);
+                const response = await axios.get('http://localhost:8080/api/materiasprofessores/professores');
+                setmateriasProfessores(response.data);
             } catch (error) {
-                console.log('Erro ao buscar as associações de turmas e professores', error);
+                console.log('Erro ao buscar as associações de materias e professores', error);
             }
         }
 
@@ -83,24 +72,25 @@ export default function grade() {
     function handleSubmit(event) {
         event.preventDefault();
 
-        const turmaId = turmaProfessor.turmas;
-        const professorId = turmaProfessor.professores;
+        const materiaId = materiaProfessor.materias;
+        const professorId = materiaProfessor.professores;
+        const id = materiaProfessor.id;
 
-        if (!turmaId || !professorId) {
-            console.error("ID da turma ou do professor não selecionado!");
+        if (!materiaId || !professorId) {
+            console.error("ID da materia ou do professor não selecionado!");
             return;
         }
 
-        if (turmaProfessor.id === undefined) {
+        if (materiaProfessor.id === undefined) {
             console.log("inserir");
-
+    
             let params = {
-                turmas: { id: turmaId },
+                materias: { id: materiaId },
                 professores: { id: professorId }
             }
 
             axios
-                .post(`http://localhost:8080/api/turmasprofessores/${turmaId}/${professorId}`, params)
+                .post(`http://localhost:8080/api/materiasprofessores/${materiaId}/${professorId}`, params)
                 .then(result => {
                     alert("Associação feita com sucesso!");
                     setAtualizar(result);
@@ -110,11 +100,12 @@ export default function grade() {
                 });
         } else {
             let params = {
-                turmas: { id: turmaId },
+                id: id,
+                materias: { id: materiaId },
                 professores: { id: professorId }
             }
             axios
-                .put(`http://localhost:8080/api/turmasprofessores/${turmaProfessor.id}`, params)
+                .put(`http://localhost:8080/api/materiasprofessores/${materiaProfessor.id}`, params)
                 .then(result => {
                     alert("Associação alterada com sucesso!");
                     setAtualizar(result);
@@ -128,7 +119,7 @@ export default function grade() {
     }
 
     function excluir(id) {
-        axios.delete(`http://localhost:8080/api/turmasprofessores/${id}`)
+        axios.delete(`http://localhost:8080/api/materiasprofessores/${id}`)
             .then(response => {
                 if (response.status === 204) {
                     setAtualizar(!atualizar);
@@ -140,15 +131,13 @@ export default function grade() {
     }
 
     function limpar() {
-        setTurmaProfessor({ turmas: '', professores: '' })
+        setmateriaProfessor({ materias: '', professores: '' })
     }
-
-
 
     function handleChange(event) {
         const { name, value } = event.target;
-
-        setTurmaProfessor(prevState => ({
+    
+        setmateriaProfessor(prevState => ({
             ...prevState,
             [name]: value
         }));
@@ -161,35 +150,35 @@ export default function grade() {
                     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossOrigin="anonymous"></link>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
                     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossOrigin="anonymous"></script>
-                <h2>Associação de turma aos professores</h2>
+                <h2>Associação de matéria aos professores</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="col-6">
                         <div>
-                            <label className="form-label">Turmas</label>
+                            
                             <select
                                 onChange={handleChange}
-                                name="turmas"
+                                name="materias"
                                 className="form-select"
-                                id="turmas"
+                                id="materias"
                                 required
-                                value={turmaProfessor.turmas}
+                                value={materiaProfessor.materias}
                             >
-                                <option value="">Selecione uma turma</option>
-                                {turmas.map((turma) => (
-                                    <option key={turma.id} value={turma.id}>
-                                        {turma.nometurma}
+                                <option value="">Selecione a matéria</option>
+                                {materias.map((mat) => (
+                                    <option key={mat.id} value={mat.id}>
+                                        {mat.nomemateria}
                                     </option>
                                 ))}
-                            </select>
+                            </select>&nbsp;&nbsp;
+
                            
-                            <label className="form-label">Professores</label>
                             <select
                                 onChange={handleChange}
                                 name="professores"
                                 className="form-select"
                                 id="professores"
                                 required
-                                value={turmaProfessor.professores}
+                                value={materiaProfessor.professores}
                             >
                                 <option value="">Selecione um professor</option>
                                 {professores.map((professor) => (
@@ -202,33 +191,33 @@ export default function grade() {
 
                             <input type="submit" value="Cadastrar" className="btn btn-success"></input>
                             <br />
-                        </div>
-                    </div>&nbsp;&nbsp;
+                        </div>&nbsp;&nbsp;
+                    </div>
                 </form>
 
                 <table className="table">
                     <thead>
                         <tr>
                             <th scope="col">Professor</th>
-                            <th scope="col">Turma</th>
+                            <th scope="col">Matérias</th>
                             <th scope="col">Opções</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {turmasProfessores.map(turPro => (
-                            <tr key={turPro.id}>
-                                <td>{turPro.nomeProfessor}</td>
-                                <td>{turPro.nomeTurma}</td>
+                        {materiasProfessores.map(matPro => (
+                            <tr key={matPro.id}>
+                                <td>{matPro.nomeProfessor}</td>
+                                <td>{matPro.nomeMateria}</td>
                                 <td>
                                     <button
-                                        onClick={() => preencherCampos(turPro)}
+                                        onClick={() => preencherCampos(matPro)}
                                         className="btn btn-primary"
                                     >
                                         Alterar
                                     </button>
 
                                     &nbsp;&nbsp;
-                                    <button onClick={() => excluir(turPro.id)} className="btn btn-danger">
+                                    <button onClick={() => excluir(matPro.id)} className="btn btn-danger">
                                         Excluir
                                     </button>
                                 </td>
@@ -240,6 +229,7 @@ export default function grade() {
                             Voltar
                         </button>
             </div>
+            
         </div>
     );
 }
